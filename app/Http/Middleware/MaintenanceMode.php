@@ -18,9 +18,7 @@ class MaintenanceMode
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $enabled = filter_var(env('MAINTENANCE_MODE', false), FILTER_VALIDATE_BOOL);
-
-        if ($enabled && ! $request->is('admin', 'admin/*')) {
+        if (config('site.maintenance_mode') && ! $request->is('admin', 'admin/*')) {
             return response()->view('errors.503', [], 503);
         }
 
