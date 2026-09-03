@@ -45,6 +45,8 @@ class ContentSeeder extends Seeder
                 'value' => 'Ce refuge se construira avec vous'],
             ['key' => 'home.cta.text', 'page' => 'accueil', 'label' => 'Texte — bandeau de soutien', 'type' => 'richtext',
                 'value' => "Bénévolat, dons, mécénat d'entreprise, signalement de foncier disponible : chaque forme de soutien rapproche le territoire de la CARO d'une solution locale et responsable."],
+            ['key' => 'home.saisonnalite.text', 'page' => 'accueil', 'label' => 'Texte — encart affluence estivale (source : Gendarmerie nationale, 2021)', 'type' => 'richtext',
+                'value' => "Cette pression est amplifiée l'été : sur l'Île-d'Aix par exemple, la population passe de 236 habitants permanents à 5 000 à 8 000 visiteurs par jour en pointe estivale — une affluence saisonnière qui accroît le risque de chiens égarés ou abandonnés sur le territoire."],
             ['key' => 'home.hero.image', 'page' => 'accueil', 'label' => 'Photo — le futur refuge (hero)', 'type' => 'image', 'value' => null],
             ['key' => 'home.terrain.image', 'page' => 'accueil', 'label' => 'Photo — le terrain', 'type' => 'image', 'value' => null],
 

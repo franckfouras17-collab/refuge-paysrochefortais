@@ -67,6 +67,11 @@
         icon="compass" />
     </div>
 
+    <x-callout tone="note" class="mt-8 max-w-2xl">
+      {{ $ci::get('home.saisonnalite.text', "Cette pression est amplifiée l'été : sur l'Île-d'Aix par exemple, la population passe de 236 habitants permanents à 5 000 à 8 000 visiteurs par jour en pointe estivale — une affluence saisonnière qui accroît le risque de chiens égarés ou abandonnés sur le territoire.") }}
+      <p class="mt-2 text-xs text-ink/50">Source : Gendarmerie nationale, 2021.</p>
+    </x-callout>
+
     <div class="mt-8">
       <a href="{{ route('projet') }}" class="inline-flex items-center gap-2 font-semibold text-marsh hover:text-[#3d5960]">
         Comprendre le constat et le projet
