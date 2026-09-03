@@ -33,7 +33,7 @@
 
       <div class="relative">
         <div class="absolute -inset-6 -z-10 rounded-[2.5rem] bg-marsh/8" aria-hidden="true"></div>
-        <x-photo-placeholder label="le futur refuge, une fois construit" ratio="square" />
+        <x-photo-placeholder label="le futur refuge, une fois construit" ratio="square" :image="$ci::image('home.hero.image')" />
       </div>
     </div>
 
@@ -132,7 +132,7 @@
           <x-button href="{{ route('budget-calendrier') }}" variant="ghost">Voir le budget et le calendrier</x-button>
         </div>
       </div>
-      <x-photo-placeholder label="le terrain, une fois identifié" ratio="video" />
+      <x-photo-placeholder label="le terrain, une fois identifié" ratio="video" :image="$ci::image('home.terrain.image')" />
     </div>
   </section>
 

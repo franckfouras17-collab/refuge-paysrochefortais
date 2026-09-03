@@ -45,6 +45,8 @@ class ContentSeeder extends Seeder
                 'value' => 'Ce refuge se construira avec vous'],
             ['key' => 'home.cta.text', 'page' => 'accueil', 'label' => 'Texte — bandeau de soutien', 'type' => 'richtext',
                 'value' => "Bénévolat, dons, mécénat d'entreprise, signalement de foncier disponible : chaque forme de soutien rapproche le territoire de la CARO d'une solution locale et responsable."],
+            ['key' => 'home.hero.image', 'page' => 'accueil', 'label' => 'Photo — le futur refuge (hero)', 'type' => 'image', 'value' => null],
+            ['key' => 'home.terrain.image', 'page' => 'accueil', 'label' => 'Photo — le terrain', 'type' => 'image', 'value' => null],
 
             // --- Le projet ---
             ['key' => 'projet.hero.lede', 'page' => 'le-projet', 'label' => 'Texte sous le titre (hero)', 'type' => 'richtext',
@@ -67,6 +69,9 @@ class ContentSeeder extends Seeder
                 'value' => "Les bâtiments reposent sur des pieux métalliques vissés plutôt que sur une dalle béton, une adaptation au sol argileux de marais : structures surélevées de 30 à 50 cm, réversibles en fin de vie."],
             ['key' => 'projet.eco.title', 'page' => 'le-projet', 'label' => 'Titre — section "Construction écoresponsable"', 'type' => 'text',
                 'value' => 'Du bois biosourcé, pas de dalle béton'],
+            ['key' => 'projet.carte.image', 'page' => 'le-projet', 'label' => 'Photo — carte du territoire de la CARO', 'type' => 'image', 'value' => null],
+            ['key' => 'projet.terrain.image', 'page' => 'le-projet', 'label' => 'Photo — le terrain recherché', 'type' => 'image', 'value' => null],
+            ['key' => 'projet.batiments.image', 'page' => 'le-projet', 'label' => 'Photo — détail de l\'ossature bois', 'type' => 'image', 'value' => null],
 
             // --- Adoption ---
             ['key' => 'adoption.hero.lede', 'page' => 'adoption', 'label' => 'Texte sous le titre (hero)', 'type' => 'richtext',

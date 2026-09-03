@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 
 #[Fillable(['content_key', 'page', 'label', 'type', 'value', 'updated_by'])]
 class ContentItem extends Model
@@ -26,5 +27,18 @@ class ContentItem extends Model
         });
 
         return $values[$key] ?? $fallback;
+    }
+
+    /**
+     * Comme get(), mais pour un content_item de type "image" : retourne
+     * l'URL publique du fichier stocké, ou null tant qu'aucune image n'a
+     * été uploadée (le composant photo-placeholder gère alors l'affichage
+     * d'un encart "photo à venir").
+     */
+    public static function image(string $key): ?string
+    {
+        $path = self::get($key);
+
+        return $path ? Storage::url($path) : null;
     }
 }

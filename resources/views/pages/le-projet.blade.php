@@ -39,7 +39,7 @@
         {{ $ci::get('projet.constat.text2', 'Deux refuges existent à proximité, mais hors périmètre CARO.') }}
       </p>
     </div>
-    <x-photo-placeholder label="carte du territoire de la CARO" ratio="video" />
+    <x-photo-placeholder label="carte du territoire de la CARO" ratio="video" :image="$ci::image('projet.carte.image')" />
   </section>
 
   {{-- Pourquoi ce projet est judicieux --}}
@@ -92,7 +92,7 @@
 
   {{-- Le terrain --}}
   <section class="mx-auto max-w-8xl px-5 sm:px-8 py-16 sm:py-20 grid gap-12 lg:grid-cols-2 items-start">
-    <x-photo-placeholder label="le terrain recherché, une fois identifié" ratio="video" class="lg:order-2" />
+    <x-photo-placeholder label="le terrain recherché, une fois identifié" ratio="video" class="lg:order-2" :image="$ci::image('projet.terrain.image')" />
     <div class="lg:order-1">
       <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Le terrain</p>
       <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
@@ -190,7 +190,7 @@
           </li>
         </ul>
       </div>
-      <x-photo-placeholder label="détail de l'ossature bois sur pieux vissés" ratio="square" />
+      <x-photo-placeholder label="détail de l'ossature bois sur pieux vissés" ratio="square" :image="$ci::image('projet.batiments.image')" />
     </div>
   </section>
 
