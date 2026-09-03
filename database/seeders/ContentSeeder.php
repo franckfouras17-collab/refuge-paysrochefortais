@@ -126,11 +126,29 @@ class ContentSeeder extends Seeder
                 'value' => "Terrain agricole (zone A du PLU) d'au moins 5 000 m², secteur de Fouras (Soumard) ou de Saint-Laurent-de-la-Prée : faites-le nous savoir."],
         ];
 
+        // On ne réécrit jamais "value" pour un content_item déjà existant : un
+        // admin a pu le personnaliser (texte modifié, image uploadée) depuis
+        // le seed initial, et relancer ce seeder ne doit jamais l'écraser.
         foreach ($items as $item) {
-            ContentItem::updateOrCreate(
-                ['content_key' => $item['key']],
-                ['page' => $item['page'], 'label' => $item['label'], 'type' => $item['type'], 'value' => $item['value']]
-            );
+            $existing = ContentItem::where('content_key', $item['key'])->first();
+
+            if ($existing) {
+                $existing->update([
+                    'page' => $item['page'],
+                    'label' => $item['label'],
+                    'type' => $item['type'],
+                ]);
+
+                continue;
+            }
+
+            ContentItem::create([
+                'content_key' => $item['key'],
+                'page' => $item['page'],
+                'label' => $item['label'],
+                'type' => $item['type'],
+                'value' => $item['value'],
+            ]);
         }
     }
 }
