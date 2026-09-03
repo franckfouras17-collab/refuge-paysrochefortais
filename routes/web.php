@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DogController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
@@ -43,5 +44,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         Route::get('contenu', [ContentController::class, 'index'])->name('content.index');
         Route::get('contenu/{content}', [ContentController::class, 'edit'])->name('content.edit');
         Route::put('contenu/{content}', [ContentController::class, 'update'])->name('content.update');
+
+        Route::resource('utilisateurs', UserController::class)->names('users')->parameters(['utilisateurs' => 'user'])->except(['show']);
     });
 });

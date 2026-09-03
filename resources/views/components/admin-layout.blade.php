@@ -35,6 +35,9 @@
               <a href="{{ route('admin.content.index') }}" class="rounded-lg px-3 py-2.5 text-ink/80 hover:bg-marsh/8 hover:text-marsh {{ request()->routeIs('admin.content.*') ? 'bg-marsh/10 text-marsh' : '' }}">
                 Contenu du site
               </a>
+              <a href="{{ route('admin.users.index') }}" class="rounded-lg px-3 py-2.5 text-ink/80 hover:bg-marsh/8 hover:text-marsh {{ request()->routeIs('admin.users.*') ? 'bg-marsh/10 text-marsh' : '' }}">
+                Utilisateurs
+              </a>
             @endif
           </nav>
 
@@ -53,6 +56,12 @@
           @if (session('status'))
             <div class="mb-6 rounded-xl border border-marsh/30 bg-marsh/8 px-4 py-3 text-sm text-marsh">
               {{ session('status') }}
+            </div>
+          @endif
+
+          @if ($errors->any())
+            <div class="mb-6 rounded-xl border border-wood/30 bg-wood/8 px-4 py-3 text-sm text-wood">
+              {{ $errors->first() }}
             </div>
           @endif
 
