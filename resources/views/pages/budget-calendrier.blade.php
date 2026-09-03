@@ -21,7 +21,7 @@
     <div class="max-w-2xl">
       <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Budget d'investissement — Phase 1</p>
       <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-        140 000 € à 200 000 €+ TTC
+        {{ \App\Models\ContentItem::get('budget.montant.title', '140 000 € à 200 000 €+ TTC') }}
       </h2>
     </div>
 
@@ -42,7 +42,7 @@
       <div class="max-w-2xl">
         <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Calendrier prévisionnel</p>
         <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-          De la constitution juridique à l'ouverture
+          {{ \App\Models\ContentItem::get('budget.calendrier.title', "De la constitution juridique à l'ouverture") }}
         </h2>
       </div>
 

@@ -15,13 +15,14 @@
       'Stockage nourriture et matériel', 'Buanderie',
     ]],
   ];
+  $ci = \App\Models\ContentItem::class;
 @endphp
 <x-layout title="Le projet" description="Le constat, le cadre légal, le terrain recherché et les bâtiments envisagés pour le futur refuge canin du Pays Rochefortais.">
 
   <x-page-hero
     eyebrow="Le projet"
     title="Un projet pensé avec la même rigueur qu'une installation classée"
-    lede="Du constat territorial au choix des matériaux, chaque décision s'appuie sur le cadre réglementaire applicable aux fourrières et refuges — une exigence assumée dès l'origine."
+    :lede="$ci::get('projet.hero.lede', 'Du constat territorial au choix des matériaux, chaque décision s\'appuie sur le cadre réglementaire applicable aux fourrières et refuges.')"
   />
 
   {{-- Le constat --}}
@@ -29,17 +30,13 @@
     <div>
       <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Le constat</p>
       <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-        Aucune structure de refuge sur le territoire de la CARO
+        {{ $ci::get('projet.constat.title', 'Aucune structure de refuge sur le territoire de la CARO') }}
       </h2>
       <p class="mt-5 text-ink/70 leading-relaxed">
-        Aujourd'hui, un chien trouvé errant sur le territoire de la Communauté d'Agglomération
-        Rochefort Océan est envoyé à la SPA de Saintes, à une trentaine de kilomètres. Aucune
-        structure de refuge n'existe sur le territoire de la CARO elle-même.
+        {{ $ci::get('projet.constat.text1', "Aujourd'hui, un chien trouvé errant sur le territoire de la CARO est envoyé à la SPA de Saintes.") }}
       </p>
       <p class="mt-4 text-ink/70 leading-relaxed">
-        Deux refuges existent à proximité, mais hors périmètre CARO : le Refuge Oléronais, au
-        Château-d'Oléron, et Les Murmures / ASPAC, à Châtelaillon-Plage. Ces deux communes
-        dépendent d'autres intercommunalités.
+        {{ $ci::get('projet.constat.text2', 'Deux refuges existent à proximité, mais hors périmètre CARO.') }}
       </p>
     </div>
     <x-photo-placeholder label="carte du territoire de la CARO" ratio="video" />
@@ -51,7 +48,7 @@
       <div class="max-w-2xl">
         <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Le cadre légal</p>
         <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-          Pourquoi ce projet est juridiquement et localement pertinent
+          {{ $ci::get('projet.cadre.title', 'Pourquoi ce projet est juridiquement et localement pertinent') }}
         </h2>
       </div>
 
@@ -99,12 +96,10 @@
     <div class="lg:order-1">
       <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Le terrain</p>
       <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-        Un terrain agricole recherché en secteur rétro-littoral
+        {{ $ci::get('projet.terrain.title', 'Un terrain agricole recherché en secteur rétro-littoral') }}
       </h2>
       <p class="mt-5 text-ink/70 leading-relaxed">
-        La recherche se concentre sur un terrain agricole (zone A du PLU) d'au moins 5 000 m²,
-        dans le secteur rétro-littoral de Fouras (secteur de Soumard) et de
-        Saint-Laurent-de-la-Prée.
+        {{ $ci::get('projet.terrain.text', "La recherche se concentre sur un terrain agricole (zone A du PLU) d'au moins 5 000 m².") }}
       </p>
       <x-callout tone="note" class="mt-6">
         <strong>Contraintes réglementaires ICPE (rubrique 2120)</strong> — régime Déclaration
@@ -120,12 +115,10 @@
       <div class="max-w-2xl">
         <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Les bâtiments</p>
         <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-          Une ossature bois sur pieux vissés, adaptée au sol de marais
+          {{ $ci::get('projet.batiments.title', 'Une ossature bois sur pieux vissés, adaptée au sol de marais') }}
         </h2>
         <p class="mt-4 text-lg text-ink/70 leading-relaxed">
-          Les bâtiments reposent sur des pieux métalliques vissés plutôt que sur une dalle béton,
-          une adaptation au sol argileux de marais : structures surélevées de 30 à 50 cm,
-          réversibles en fin de vie.
+          {{ $ci::get('projet.batiments.text', "Les bâtiments reposent sur des pieux métalliques vissés plutôt que sur une dalle béton.") }}
         </p>
       </div>
 
@@ -176,7 +169,7 @@
       <div>
         <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Construction écoresponsable</p>
         <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-          Du bois biosourcé, pas de dalle béton
+          {{ $ci::get('projet.eco.title', 'Du bois biosourcé, pas de dalle béton') }}
         </h2>
         <ul class="mt-6 flex flex-col gap-4 text-ink/80">
           <li class="flex gap-3">

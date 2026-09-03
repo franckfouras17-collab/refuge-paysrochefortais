@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\ContentItem;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -36,24 +35,6 @@ class DatabaseSeeder extends Seeder
         $this->command->line("  admin@refuge-paysrochefortais.fr      / {$adminPassword}");
         $this->command->line("  benevole@refuge-paysrochefortais.fr   / {$userPassword}");
 
-        ContentItem::updateOrCreate(
-            ['content_key' => 'home.hero.title'],
-            [
-                'page' => 'accueil',
-                'label' => 'Titre principal (hero)',
-                'type' => 'text',
-                'value' => 'Offrir une seconde chance à chaque chien recueilli, et lui trouver une famille responsable.',
-            ]
-        );
-
-        ContentItem::updateOrCreate(
-            ['content_key' => 'home.hero.lede'],
-            [
-                'page' => 'accueil',
-                'label' => 'Texte sous le titre (hero)',
-                'type' => 'richtext',
-                'value' => "Le Refuge Canin du Pays Rochefortais est une association Loi 1901 en cours de création en Charente-Maritime. Accueillir les chiens errants, abandonnés ou saisis n'est pas une fin en soi : c'est le moyen qui nous permet d'atteindre notre véritable objectif, une adoption réussie et durable.",
-            ]
-        );
+        $this->call(ContentSeeder::class);
     }
 }

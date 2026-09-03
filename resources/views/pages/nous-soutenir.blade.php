@@ -4,10 +4,11 @@
     ['icon' => 'hand-heart', 'title' => 'Les dons et le mécénat', 'text' => "Soutenir financièrement le projet, en tant que particulier ou en tant qu'entreprise via le mécénat."],
     ['icon' => 'map-pin', 'title' => 'Le signalement de foncier', 'text' => 'Signaler un terrain agricole disponible dans le secteur rétro-littoral de Fouras ou de Saint-Laurent-de-la-Prée.'],
   ];
+  $ci = \App\Models\ContentItem::class;
 @endphp
 <x-layout title="Nous soutenir" description="Trois façons de soutenir le Refuge Canin du Pays Rochefortais : bénévolat, dons et mécénat, ou signalement de foncier disponible.">
 
-  <x-page-hero eyebrow="Nous soutenir" title="Trois façons de faire avancer le projet" />
+  <x-page-hero eyebrow="Nous soutenir" :title="$ci::get('soutenir.hero.title', 'Trois façons de faire avancer le projet')" />
 
   <section class="mx-auto max-w-8xl px-5 sm:px-8 py-16 sm:py-20">
     <div class="grid gap-6 lg:grid-cols-3">
@@ -29,11 +30,10 @@
       <div>
         <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Faire un don</p>
         <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-          Une plateforme de don sécurisée, bientôt disponible
+          {{ $ci::get('soutenir.don.title', 'Une plateforme de don sécurisée, bientôt disponible') }}
         </h2>
         <p class="mt-4 text-ink/70 leading-relaxed">
-          La collecte de dons en ligne sera assurée via HelloAsso. L'intégration est en attente de
-          mise en place.
+          {{ $ci::get('soutenir.don.text', "La collecte de dons en ligne sera assurée via HelloAsso.") }}
         </p>
         <div class="mt-6">
           <button
@@ -62,11 +62,10 @@
     <div class="flex h-full flex-col">
       <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Bénévolat</p>
       <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-        Donner de son temps, au bureau ou sur le terrain
+        {{ $ci::get('soutenir.benevolat.title', 'Donner de son temps, au bureau ou sur le terrain') }}
       </h2>
       <p class="mt-4 text-ink/70 leading-relaxed">
-        L'association se construit aussi grâce à l'engagement de ses bénévoles : gouvernance
-        (bureau, conseil d'administration), communication, événements, ou aide administrative.
+        {{ $ci::get('soutenir.benevolat.text', "L'association se construit aussi grâce à l'engagement de ses bénévoles.") }}
       </p>
       <div class="mt-auto pt-6">
         <x-button href="{{ route('contact') }}" variant="secondary">Proposer mon aide</x-button>
@@ -75,11 +74,10 @@
     <div class="flex h-full flex-col">
       <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Foncier</p>
       <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-        Vous connaissez un terrain disponible&nbsp;?
+        {{ $ci::get('soutenir.foncier.title', 'Vous connaissez un terrain disponible ?') }}
       </h2>
       <p class="mt-4 text-ink/70 leading-relaxed">
-        Terrain agricole (zone A du PLU) d'au moins 5 000 m², secteur de Fouras (Soumard) ou de
-        Saint-Laurent-de-la-Prée : faites-le nous savoir.
+        {{ $ci::get('soutenir.foncier.text', "Terrain agricole (zone A du PLU) d'au moins 5 000 m², secteur de Fouras ou de Saint-Laurent-de-la-Prée.") }}
       </p>
       <div class="mt-auto pt-6">
         <x-button href="{{ route('contact') }}" variant="ghost">Signaler un terrain</x-button>

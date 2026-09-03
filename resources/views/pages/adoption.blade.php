@@ -20,13 +20,14 @@
     ['q' => "Les frais d'adoption couvrent-ils l'identification et les soins ?", 'a' => "Oui, les frais d'adoption envisagés incluront l'identification du chien (puce électronique) ainsi que ses premiers soins réalisés au refuge."],
     ['q' => "Les critères d'adoption sont-ils déjà définitifs ?", 'a' => "Non. Les grandes lignes présentées ici (engagement dans la durée, compatibilité avec le foyer, accord de tous ses membres) reflètent la philosophie du projet, mais les règles précises seront validées par l'association au moment de l'ouverture."],
   ];
+  $ci = \App\Models\ContentItem::class;
 @endphp
 <x-layout title="Adoption" description="L'adoption est la finalité du Refuge Canin du Pays Rochefortais. Découvrez le processus d'adoption envisagé et pré-inscrivez-vous pour être averti·e dès l'ouverture.">
 
   <x-page-hero
     eyebrow="Adoption"
     title="Trouver à chaque chien une famille responsable : notre raison d'être"
-    lede="Accueillir un animal n'est jamais une fin en soi. L'article 2 des statuts de l'association fixe l'objectif : lui trouver un foyer responsable, pour une adoption qui dure."
+    :lede="$ci::get('adoption.hero.lede', \"Accueillir un animal n'est jamais une fin en soi.\")"
   />
 
   @if ($dogs->isNotEmpty())
@@ -65,8 +66,7 @@
       @if ($dogs->isEmpty())
         Il n'y a donc pas encore de chiens à adopter.
       @endif
-      Cette page présente par avance le processus envisagé ; elle sera activée avec les
-      premiers profils d'animaux dès l'ouverture du refuge.
+      {{ $ci::get('adoption.warning.text', "Cette page présente par avance le processus envisagé ; elle sera activée avec les premiers profils d'animaux dès l'ouverture du refuge.") }}
     </x-callout>
   </section>
 
@@ -90,11 +90,10 @@
     <div>
       <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Les critères envisagés</p>
       <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-        Ce que nous chercherons à vérifier
+        {{ $ci::get('adoption.criteres.title', 'Ce que nous chercherons à vérifier') }}
       </h2>
       <p class="mt-4 text-ink/70 leading-relaxed">
-        Ces grandes lignes reflètent la philosophie du projet ; elles ne constituent pas encore un
-        règlement définitif, qui sera validé par l'association à l'ouverture.
+        {{ $ci::get('adoption.criteres.text', 'Ces grandes lignes reflètent la philosophie du projet.') }}
       </p>
       <ul class="mt-6 flex flex-col gap-4">
         @foreach ($criteria as $c)
@@ -120,11 +119,10 @@
     <div class="rounded-3xl border border-line bg-marsh/6 p-8 sm:p-12">
       <div class="max-w-xl">
         <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ink">
-          Soyez averti·e en priorité de l'ouverture des adoptions
+          {{ $ci::get('adoption.preinscription.title', "Soyez averti·e en priorité de l'ouverture des adoptions") }}
         </h2>
         <p class="mt-3 text-ink/70 leading-relaxed">
-          Laissez votre email : nous vous préviendrons dès la mise en ligne des premiers profils
-          de chiens à adopter.
+          {{ $ci::get('adoption.preinscription.text', 'Laissez votre email : nous vous préviendrons dès la mise en ligne des premiers profils.') }}
         </p>
       </div>
       <div class="mt-6 max-w-xl">

@@ -22,13 +22,14 @@
         "Sans garantie d'obtention",
       ]],
   ];
+  $ci = \App\Models\ContentItem::class;
 @endphp
 <x-layout title="Financement" description="Trois niveaux de certitude pour le financement du refuge : dons et mécénat local, subventions publiques à négocier, et fondations nationales sur appel à projet.">
 
   <x-page-hero
     eyebrow="Financement"
     title="Trois niveaux de certitude, présentés en toute transparence"
-    lede="Plutôt que d'annoncer un plan de financement figé, nous distinguons ce qui est quasi maîtrisable, ce qui reste à négocier, et ce qui relève de démarches compétitives et incertaines."
+    :lede="$ci::get('financement.hero.lede', \"Plutôt que d'annoncer un plan de financement figé, nous distinguons ce qui est quasi maîtrisable, ce qui reste à négocier, et ce qui relève de démarches compétitives.\")"
   />
 
   <section class="mx-auto max-w-8xl px-5 sm:px-8 py-16 sm:py-20">

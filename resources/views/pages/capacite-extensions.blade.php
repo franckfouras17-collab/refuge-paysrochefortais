@@ -6,16 +6,17 @@
     ['icon' => 'leaf', 'title' => 'Volet pédagogique', 'text' => 'Des temps d\'accueil scolaire pour sensibiliser au bien-être et à la responsabilité animale.'],
     ['icon' => 'map-pin', 'title' => 'Extension territoriale', 'text' => 'Une convention étendue à d\'autres communes au-delà du périmètre initial de la CARO.'],
   ];
+  $ci = \App\Models\ContentItem::class;
 @endphp
 <x-layout title="Capacité et extensions" description="Capacité d'accueil initiale du refuge et pistes d'extension envisagées à moyen terme : chatterie, dispensaire solidaire, volet pédagogique.">
 
-  <x-page-hero eyebrow="Capacité & extensions" title="Une phase 1 dimensionnée, des extensions déjà réfléchies" />
+  <x-page-hero eyebrow="Capacité & extensions" :title="$ci::get('capacite.hero.title', 'Une phase 1 dimensionnée, des extensions déjà réfléchies')" />
 
   <section class="mx-auto max-w-8xl px-5 sm:px-8 py-16 sm:py-20">
     <div class="max-w-2xl">
       <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Phase 1</p>
       <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-        Une capacité initiale de 10 à 12 chiens
+        {{ $ci::get('capacite.phase1.title', 'Une capacité initiale de 10 à 12 chiens') }}
       </h2>
     </div>
 
@@ -35,11 +36,10 @@
       <div class="max-w-2xl">
         <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">À moyen terme</p>
         <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-          Des pistes d'extension déjà identifiées
+          {{ $ci::get('capacite.extensions.title', "Des pistes d'extension déjà identifiées") }}
         </h2>
         <p class="mt-4 text-lg text-ink/70 leading-relaxed">
-          Une fois la phase 1 stabilisée, plusieurs pistes de développement sont envisagées pour le
-          refuge et son rôle sur le territoire.
+          {{ $ci::get('capacite.extensions.text', 'Une fois la phase 1 stabilisée, plusieurs pistes de développement sont envisagées.') }}
         </p>
       </div>
 

@@ -4,6 +4,7 @@
     ['icon' => 'leaf', 'title' => 'Soigner', 'text' => "Assurer les soins, l'identification et le bien-être de chaque animal le temps de son séjour au refuge."],
     ['icon' => 'heart', 'title' => 'Adopter', 'text' => 'Trouver à chaque chien une famille responsable et engagée, pour une seconde chance durable.'],
   ];
+  $ci = \App\Models\ContentItem::class;
 @endphp
 <x-layout title="Accueil" description="Le Refuge Canin du Pays Rochefortais est une association Loi 1901 en cours de création en Charente-Maritime, dont la mission est d'accueillir les chiens du territoire de la CARO et de leur trouver une famille responsable.">
 
@@ -17,11 +18,11 @@
         </span>
 
         <h1 class="mt-6 font-display text-4xl sm:text-5xl lg:text-[3.4rem] font-semibold leading-[1.08] text-ink">
-          {{ \App\Models\ContentItem::get('home.hero.title', 'Offrir une seconde chance à chaque chien recueilli, et lui trouver une famille responsable.') }}
+          {{ $ci::get('home.hero.title', 'Offrir une seconde chance à chaque chien recueilli, et lui trouver une famille responsable.') }}
         </h1>
 
         <p class="mt-6 max-w-xl text-lg text-ink/70 leading-relaxed">
-          {{ \App\Models\ContentItem::get('home.hero.lede', "Le Refuge Canin du Pays Rochefortais est une association Loi 1901 en cours de création en Charente-Maritime. Accueillir les chiens errants, abandonnés ou saisis n'est pas une fin en soi : c'est le moyen qui nous permet d'atteindre notre véritable objectif, une adoption réussie et durable.") }}
+          {{ $ci::get('home.hero.lede', "Le Refuge Canin du Pays Rochefortais est une association Loi 1901 en cours de création en Charente-Maritime.") }}
         </p>
 
         <div class="mt-9 flex flex-wrap items-center gap-4">
@@ -44,19 +45,26 @@
     <div class="max-w-2xl">
       <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Le territoire</p>
       <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-        Un territoire sans refuge, aujourd'hui dépendant d'une structure extérieure
+        {{ $ci::get('home.territoire.title', "Un territoire sans refuge, aujourd'hui dépendant d'une structure extérieure") }}
       </h2>
       <p class="mt-4 text-lg text-ink/70 leading-relaxed">
-        La Communauté d'Agglomération Rochefort Océan ne dispose d'aucun refuge sur son propre
-        territoire. Les chiens trouvés errants sont aujourd'hui envoyés à la SPA de Saintes,
-        à une trentaine de kilomètres.
+        {{ $ci::get('home.territoire.text', "La Communauté d'Agglomération Rochefort Océan ne dispose d'aucun refuge sur son propre territoire.") }}
       </p>
     </div>
 
     <div class="mt-10 grid gap-5 sm:grid-cols-3">
-      <x-stat-tile value="25 communes" label="membres de la Communauté d'Agglomération Rochefort Océan (CARO)" icon="map-pin" />
-      <x-stat-tile value="63 500 habitants" label="sur 421 km² de territoire, sans refuge canin" icon="users" />
-      <x-stat-tile value="≈ 30 km" label="jusqu'à la fourrière actuelle, la SPA de Saintes" icon="compass" />
+      <x-stat-tile
+        :value="$ci::get('home.stat1.value', '25 communes')"
+        :label="$ci::get('home.stat1.label', \"membres de la Communauté d'Agglomération Rochefort Océan (CARO)\")"
+        icon="map-pin" />
+      <x-stat-tile
+        :value="$ci::get('home.stat2.value', '63 500 habitants')"
+        :label="$ci::get('home.stat2.label', 'sur 421 km² de territoire, sans refuge canin')"
+        icon="users" />
+      <x-stat-tile
+        :value="$ci::get('home.stat3.value', '≈ 30 km')"
+        :label="$ci::get('home.stat3.label', \"jusqu'à la fourrière actuelle, la SPA de Saintes\")"
+        icon="compass" />
     </div>
 
     <div class="mt-8">
@@ -73,7 +81,7 @@
       <div class="max-w-2xl">
         <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Notre mission</p>
         <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-          Accueillir n'est que le moyen. L'adoption est la finalité.
+          {{ $ci::get('home.mission.title', "Accueillir n'est que le moyen. L'adoption est la finalité.") }}
         </h2>
       </div>
 
@@ -101,12 +109,10 @@
       <div>
         <p class="text-sm font-semibold uppercase tracking-[0.14em] text-wood">Avancement</p>
         <h2 class="mt-3 font-display text-3xl sm:text-4xl font-semibold text-ink">
-          Un projet sérieux, pensé dès l'origine avec rigueur
+          {{ $ci::get('home.avancement.title', "Un projet sérieux, pensé dès l'origine avec rigueur") }}
         </h2>
         <p class="mt-4 text-lg text-ink/70 leading-relaxed">
-          Recherche de terrain, dossier réglementaire ICPE, financement en trois niveaux de
-          certitude, calendrier réaliste : chaque étape du projet est documentée et transparente,
-          pour donner confiance aux collectivités, aux donateurs et aux futurs bénévoles.
+          {{ $ci::get('home.avancement.text', 'Recherche de terrain, dossier réglementaire ICPE, financement en trois niveaux de certitude, calendrier réaliste.') }}
         </p>
         <ul class="mt-6 flex flex-col gap-3 text-ink/80">
           <li class="flex items-center gap-3">
@@ -136,11 +142,10 @@
     <div class="relative mx-auto max-w-8xl px-5 sm:px-8 py-16 sm:py-20 grid gap-10 lg:grid-cols-[1.3fr_1fr] items-center">
       <div>
         <h2 class="font-display text-3xl sm:text-4xl font-semibold text-paper">
-          Ce refuge se construira avec vous
+          {{ $ci::get('home.cta.title', 'Ce refuge se construira avec vous') }}
         </h2>
         <p class="mt-4 max-w-xl text-lg text-paper/70 leading-relaxed">
-          Bénévolat, dons, mécénat d'entreprise, signalement de foncier disponible : chaque forme
-          de soutien rapproche le territoire de la CARO d'une solution locale et responsable.
+          {{ $ci::get('home.cta.text', "Bénévolat, dons, mécénat d'entreprise, signalement de foncier disponible.") }}
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
           <x-button href="{{ route('nous-soutenir') }}" variant="primary">Nous soutenir</x-button>
