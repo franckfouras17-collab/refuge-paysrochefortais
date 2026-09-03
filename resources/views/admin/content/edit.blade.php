@@ -15,6 +15,7 @@
       <div class="flex flex-col gap-2">
         <label for="image" class="text-sm font-semibold text-ink">Nouvelle image</label>
         <input id="image" name="image" type="file" accept="image/*" class="text-sm" />
+        <p class="text-xs text-ink/50">L'image est redimensionnée automatiquement à la bonne taille pour cet emplacement.</p>
         @error('image')
           <p class="text-sm text-wood">{{ $message }}</p>
         @enderror

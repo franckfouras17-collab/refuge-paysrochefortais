@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Dog;
 use App\Models\DogPhoto;
+use App\Support\ImageResizer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -108,8 +109,11 @@ class DogController extends Controller
 
         $nextPosition = $dog->photos()->max('position') + 1;
 
+        // Les fiches chien sont affichées en cartes ~800x520 (adoption) et
+        // en vignettes plus petites (admin) : 1600x1600 est largement
+        // suffisant et évite de stocker des photos de téléphone brutes.
         foreach ($request->file('photos') as $file) {
-            $path = $file->store('dogs', 'public');
+            $path = ImageResizer::resizeAndStore($file, 'public', 'dogs', 1600, 1600);
             DogPhoto::create([
                 'dog_id' => $dog->id,
                 'filename' => $path,

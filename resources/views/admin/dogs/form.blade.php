@@ -83,6 +83,7 @@
     <div class="flex flex-col gap-2">
       <label for="photos" class="text-sm font-semibold text-ink">Ajouter des photos</label>
       <input id="photos" name="photos[]" type="file" accept="image/*" multiple class="text-sm" />
+      <p class="text-xs text-ink/50">Les photos sont redimensionnées automatiquement, inutile de les recadrer avant.</p>
       @error('photos.*') <p class="text-sm text-wood">{{ $message }}</p> @enderror
     </div>
 
