@@ -60,7 +60,13 @@
   <div class="border-t border-paper/10">
     <div class="mx-auto max-w-8xl px-5 sm:px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-paper/55">
       <p>© {{ date('Y') }} Refuge Canin du Pays Rochefortais — Association Loi 1901</p>
-      <p>Fouras (17450), Charente-Maritime</p>
+      <div class="flex items-center gap-4">
+        <p>Fouras (17450), Charente-Maritime</p>
+        <a href="{{ route('admin.login') }}" class="inline-flex items-center gap-1.5 text-paper/55 hover:text-teal transition-colors">
+          <x-icon name="lock" class="w-3.5 h-3.5" />
+          Espace admin
+        </a>
+      </div>
     </div>
   </div>
 </footer>
