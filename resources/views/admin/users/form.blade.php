@@ -18,14 +18,8 @@
       <label for="name" class="text-sm font-semibold text-ink">Nom</label>
       <input id="name" name="name" type="text" required value="{{ old('name', $editUser->name) }}"
         class="rounded-xl border border-line bg-paper px-4 py-3 text-ink focus-visible:border-marsh" />
+      <p class="text-xs text-ink/50">C'est ce nom qui sert d'identifiant de connexion (doit être unique).</p>
       @error('name') <p class="text-sm text-wood">{{ $message }}</p> @enderror
-    </div>
-
-    <div class="flex flex-col gap-2">
-      <label for="email" class="text-sm font-semibold text-ink">Email</label>
-      <input id="email" name="email" type="email" required value="{{ old('email', $editUser->email) }}"
-        class="rounded-xl border border-line bg-paper px-4 py-3 text-ink focus-visible:border-marsh" />
-      @error('email') <p class="text-sm text-wood">{{ $message }}</p> @enderror
     </div>
 
     <div class="flex flex-col gap-2">
@@ -34,7 +28,7 @@
       </label>
       <input id="password" name="password" type="password" {{ $isEdit ? '' : 'required' }}
         class="rounded-xl border border-line bg-paper px-4 py-3 text-ink focus-visible:border-marsh" />
-      <p class="text-xs text-ink/50">Au moins 8 caractères. Compte interne à l'association, pas d'email de confirmation envoyé.</p>
+      <p class="text-xs text-ink/50">Au moins 8 caractères. Compte interne à l'association, pas d'email nécessaire.</p>
       @error('password') <p class="text-sm text-wood">{{ $message }}</p> @enderror
     </div>
 

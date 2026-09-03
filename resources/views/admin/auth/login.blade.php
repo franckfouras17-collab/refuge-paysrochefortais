@@ -16,8 +16,8 @@
       <form method="POST" action="{{ route('admin.login.submit') }}" class="mt-6 flex flex-col gap-4">
         @csrf
         <div class="flex flex-col gap-2">
-          <label for="email" class="text-sm font-semibold text-ink">Email</label>
-          <input id="email" name="email" type="email" required autofocus value="{{ old('email') }}"
+          <label for="name" class="text-sm font-semibold text-ink">Nom</label>
+          <input id="name" name="name" type="text" required autofocus value="{{ old('name') }}"
             class="rounded-xl border border-line bg-paper px-4 py-3 text-ink focus-visible:border-marsh" />
         </div>
         <div class="flex flex-col gap-2">

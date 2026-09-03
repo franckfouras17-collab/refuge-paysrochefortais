@@ -20,14 +20,14 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'name' => ['required', 'string'],
             'password' => ['required'],
         ]);
 
         if (! Auth::attempt($credentials, $request->boolean('remember'))) {
             return back()->withErrors([
-                'email' => 'Identifiants incorrects.',
-            ])->onlyInput('email');
+                'name' => 'Identifiants incorrects.',
+            ])->onlyInput('name');
         }
 
         $request->session()->regenerate();

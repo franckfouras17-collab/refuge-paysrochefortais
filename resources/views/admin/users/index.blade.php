@@ -11,7 +11,6 @@
       <thead>
         <tr class="border-b border-line text-xs font-semibold uppercase tracking-wide text-ink/50">
           <th class="px-5 py-3">Nom</th>
-          <th class="px-5 py-3">Email</th>
           <th class="px-5 py-3">Rôle</th>
           <th class="px-5 py-3"></th>
         </tr>
@@ -20,7 +19,6 @@
         @foreach ($users as $user)
           <tr class="border-b border-line last:border-0">
             <td class="px-5 py-3.5 font-semibold text-ink">{{ $user->name }}</td>
-            <td class="px-5 py-3.5 text-ink/70">{{ $user->email }}</td>
             <td class="px-5 py-3.5 text-ink/70">{{ $user->role === 'admin' ? 'Administrateur·rice' : 'Utilisateur·rice' }}</td>
             <td class="px-5 py-3.5 text-right">
               <a href="{{ route('admin.users.edit', $user) }}" class="text-sm font-semibold text-marsh hover:underline">Modifier</a>

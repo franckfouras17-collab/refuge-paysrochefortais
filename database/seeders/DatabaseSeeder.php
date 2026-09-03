@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
     /**
      * Crée un compte admin et un compte utilisateur de test avec des mots
      * de passe générés aléatoirement (jamais committés en clair), affichés
-     * une seule fois dans la console.
+     * une seule fois dans la console. Le nom sert d'identifiant de
+     * connexion (pas d'email requis, comptes internes à l'association).
      */
     public function run(): void
     {
@@ -22,18 +23,18 @@ class DatabaseSeeder extends Seeder
         $userPassword = Str::password(16);
 
         User::updateOrCreate(
-            ['email' => 'admin@refuge-paysrochefortais.fr'],
-            ['name' => 'Admin', 'password' => $adminPassword, 'role' => 'admin']
+            ['name' => 'Admin'],
+            ['password' => $adminPassword, 'role' => 'admin']
         );
 
         User::updateOrCreate(
-            ['email' => 'benevole@refuge-paysrochefortais.fr'],
-            ['name' => 'Bénévole', 'password' => $userPassword, 'role' => 'utilisateur']
+            ['name' => 'Bénévole'],
+            ['password' => $userPassword, 'role' => 'utilisateur']
         );
 
         $this->command->warn('Comptes de test créés — notez ces mots de passe, ils ne seront plus affichés :');
-        $this->command->line("  admin@refuge-paysrochefortais.fr      / {$adminPassword}");
-        $this->command->line("  benevole@refuge-paysrochefortais.fr   / {$userPassword}");
+        $this->command->line("  Admin      / {$adminPassword}");
+        $this->command->line("  Bénévole   / {$userPassword}");
 
         $this->call(ContentSeeder::class);
     }
